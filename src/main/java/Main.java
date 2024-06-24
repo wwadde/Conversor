@@ -58,7 +58,7 @@ public class Main {
                     var diccionario = single.getTasasMonedasReducido();
                     // Contrucción del String para posteriormente transmitirlo al logger
                     StringBuilder informacionString = new StringBuilder();
-                    informacionString.append("Moneda buscada: ").append(single.getMonedaBuscada()).append("\n");
+                    informacionString.append("Moneda buscada: 1").append(single.getMonedaBuscada()).append(" equivale a:").append("\n");
                     diccionario.forEach((key, value) -> {
                         informacionString.append(key).append(": ").append(value).append("\n");
                     });
