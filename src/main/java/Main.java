@@ -1,7 +1,8 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import service.Cliente;
 import models.ExchangeRatePair;
 import models.ExchangeRateSingle;
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -9,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Logger logger = LoggerFactory.getLogger(Main.class);
 
         while (true) {
 
@@ -54,8 +56,13 @@ public class Main {
 
                     // Imprime el diccionario reducido
                     var diccionario = single.getTasasMonedasReducido();
-                    System.out.println("Moneda buscada: " + single.getMonedaBuscada());
-                    diccionario.entrySet().forEach(System.out::println);
+                    // Contrucción del String para posteriormente transmitirlo al logger
+                    StringBuilder informacionString = new StringBuilder();
+                    informacionString.append("Moneda buscada: ").append(single.getMonedaBuscada()).append("\n");
+                    diccionario.forEach((key, value) -> {
+                        informacionString.append(key).append(": ").append(value).append("\n");
+                    });
+                    logger.info(informacionString.toString());
 
 
                 } else {
@@ -94,7 +101,7 @@ public class Main {
                         // Extrae todos los caracteres no digitos
                         int numerosExtraidos = Integer.parseInt(simbolo2.replaceAll("\\D+",""));
                         pair.setCantidad(numerosExtraidos);
-                        System.out.println(pair);
+                        logger.info(pair.toString());
                     }
                     else {
                         System.out.println("Ocurrió un error en la búsqueda, verifique la validez de los Símbolos");

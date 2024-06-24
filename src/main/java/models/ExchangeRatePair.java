@@ -31,6 +31,6 @@ public class ExchangeRatePair {
     @Override
     public String toString() {
         return "[Tasa de cambio: 1 " + monedaReferencia + " = " + tasaConversion + " " + monedaConvertida + "]\n" +
-                cantidad + " " + monedaReferencia + " equivalen a: " + valorTotalConversion + " " + monedaConvertida;
+                cantidad + " " + monedaReferencia + " equivalen a: " + valorTotalConversion + " " + monedaConvertida + "\n";
     }
 }
